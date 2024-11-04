@@ -1,0 +1,245 @@
+<html><head><base href="." /><title>Ferramentas de Gamificação - Reuni</title>
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.topic-button {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #FF6B6B, #FFB039);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topic-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.content-panel {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: none;
+    animation: slideDown 0.3s ease-out;
+}
+
+.gamification-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.badge {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.badge svg {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.badge-title {
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.badge-points {
+    color: #FF6B6B;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(45deg, #FF6B6B, #FFB039);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.participant-stats {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.stats-title {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <button class="topic-button" onclick="toggleContent()">
+        <span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM7 10.82C5.84 10.4 5 9.3 5 8V7h2v3.82zM19 8c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+            </svg>
+            Ferramentas de Gamificação
+        </span>
+        <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+    </button>
+
+    <div id="contentPanel" class="content-panel">
+        <div class="gamification-container">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="#FFB039" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                </svg>
+                <div class="badge-title">Contribuidor Ativo</div>
+                <div class="badge-points">150 pts</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="#FF6B6B" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <div class="badge-title">Estrela da Reunião</div>
+                <div class="badge-points">280 pts</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="#4A90E2" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/>
+                </svg>
+                <div class="badge-title">Engajador</div>
+                <div class="badge-points">95 pts</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 45%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="participant-stats">
+            <h3 class="stats-title">Suas Estatísticas</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <strong>Perguntas Feitas</strong>
+                    <p>12</p>
+                </div>
+                <div class="stat-item">
+                    <strong>Respostas Dadas</strong>
+                    <p>25</p>
+                </div>
+                <div class="stat-item">
+                    <strong>Enquetes Respondidas</strong>
+                    <p>8</p>
+                </div>
+                <div class="stat-item">
+                    <strong>Ranking</strong>
+                    <p>#3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleContent() {
+    const contentPanel = document.getElementById('contentPanel');
+    const arrowIcon = document.querySelector('.arrow-icon');
+    
+    if (contentPanel.style.display === 'none' || contentPanel.style.display === '') {
+        contentPanel.style.display = 'block';
+        arrowIcon.style.transform = 'rotate(180deg)';
+    } else {
+        contentPanel.style.display = 'none';
+        arrowIcon.style.transform = 'rotate(0deg)';
+    }
+}
+
+document.querySelectorAll('.badge').forEach(badge => {
+    badge.addEventListener('mouseover', () => {
+        badge.style.transform = 'translateY(-5px) scale(1.05)';
+    });
+    
+    badge.addEventListener('mouseout', () => {
+        badge.style.transform = 'translateY(0) scale(1)';
+    });
+});
+</script>
+</body></html>
